@@ -1,0 +1,17 @@
+{
+    "editor.suggestSelection": "first",
+    "al.enableCodeAnalysis": true,
+    "al.codeAnalyzers": [
+        "${AppSourceCop}",
+        "${CodeCop}",
+        "${UICop}"
+    ],
+    "al.ruleSetPath": "rulesets/ruleset.json",
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.ObjectNameSuffix": " SCNVN",
+    "CRS.RemoveSuffixFromFilename": true,
+    "CRS.AlSubFolderName": "src",
+    "NAB.DTS ProjectId": "1782421"
+}
