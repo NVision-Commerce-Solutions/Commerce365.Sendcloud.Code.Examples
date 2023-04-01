@@ -10,8 +10,7 @@
     "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
     "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
     "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
-    "CRS.ObjectNameSuffix": " SCNVN",
+    "CRS.ObjectNameSuffix": " SCDNVN",
     "CRS.RemoveSuffixFromFilename": true,
-    "CRS.AlSubFolderName": "src",
-    "NAB.DTS ProjectId": "1782421"
+    "CRS.AlSubFolderName": "src"
 }
