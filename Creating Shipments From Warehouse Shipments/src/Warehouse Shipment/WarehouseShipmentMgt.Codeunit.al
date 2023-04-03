@@ -51,7 +51,6 @@ codeunit 50250 "Create From Whse Shipt. SCDNVN"
     internal procedure CreateShipment(WarehouseShipmentHeader: Record "Warehouse Shipment Header"; SalesOrderNo: Code[20]): Boolean
     var
         SalesHeader: Record "Sales Header";
-        Customer: Record Customer;
         ShipmentHeader: Record "Shipment Header SCNVN";
         Parcel: Record "Parcel SCNVN";
         WarehouseShipmentLine: Record "Warehouse Shipment Line";
@@ -61,19 +60,13 @@ codeunit 50250 "Create From Whse Shipt. SCDNVN"
         //Make sure we have our sales order and customer record.
         if not SalesHeader.Get(SalesDocumentType::Order, SalesOrderNo) then
             exit;
-        if not Customer.Get(SalesHeader."Sell-to Customer No.") then
-            exit;
 
-        //Create a header for this customer and sales order number. 
-        //For SenderAddressId we just use 0. This makes that the default sender address is applied.
-        //We dont need to do anything with service points, so that is also a 0 for now.
-        //As the source we provide our warehouse shipment. The recordid will be stored on our Sendcloud shipment just for reference. 
-        //?? extra api functie toevoegen met enkel SalesOrderNo, Ext. Doc. No, en source??
-        ShipmentHeader := ShipmentAPI.CreateHeader(Customer, 0, 0, SalesOrderNo, 'DEMO123', WarehouseShipmentHeader);
+        //Create a Sendcloud Shipment Header for this sales order and its sell-to customer.
+        //As the source we provide our warehouse shipment record. The recordid will be stored on our Sendcloud shipment just for reference. 
+        ShipmentHeader := ShipmentAPI.CreateHeader(SalesHeader, 'DEMO123', WarehouseShipmentHeader);
 
-        //Now that we have a header, we'll also add 1 parcel, based on the information from our sales header and sendcloud shipment header.
-        //?? extra api functie toevoegen met enkel ShipmentHeader, SalesHeader ??
-        Parcel := ShipmentAPI.CreateParcel(ShipmentHeader, SalesHeader, SalesHeader."Location Code", SalesHeader."Shipment Method Code", SalesHeader."Shipping Agent Code", SalesHeader."Shipping Agent Service Code");
+        //Now that we have a header, we'll also add 1 parcel, based on the information from our sendcloud shipment header and sales header.
+        Parcel := ShipmentAPI.CreateParcel(ShipmentHeader, SalesHeader);
 
         //As a last step we add all the lines from our warehouse document for this specific sales order.
         WarehouseShipmentLine.SetRange("No.", WarehouseShipmentHeader."No.");
@@ -92,9 +85,8 @@ codeunit 50250 "Create From Whse Shipt. SCDNVN"
         ShipmentAPI.TrySetBestShipmentMethod(Parcel);
 
         //Optionally here you could also call the following functions to directly post and print 
-        // ?? post api functie met enkel ShipmentHeader als input param toevoegen?? voor print is hij er nl al 
-        ShipmentAPI.Post(ShipmentHeader."No.", false);
-        ShipmentAPI.Print(ShipmentHeader."No.");
+        ShipmentAPI.Post(ShipmentHeader, false);
+        ShipmentAPI.Print(ShipmentHeader);
         exit(true);
     end;
 
@@ -120,9 +112,7 @@ codeunit 50250 "Create From Whse Shipt. SCDNVN"
         //We need to supply our Sendcloud shipment header and the parcel in which the item is place. 
         //The 3rd parameter is the source record. Again the recordid will be stored just for reference. So here we use the warehouse shipment line. But, you could also bring the actual sales line along.
         //The following parameter identify which item we are shipping, how many and what the weight is. 
-        //?? Now why do we also again have to set the shipment method code, agency and service??
-        //?? extra eenvoudige api functie toevoegen met shipment, parcel, source, item of variant, qty) ??
-        //?? extra eenvoudige api functie toevoegen met shipment, parcel, source, item of variant, qty, weight) ??
+        //Last we need to add shipment method, agent, and service codes to our line.
         ParcelItem := ShipmentAPI.CreateParcelItem(ShipmentHeader, Parcel, WarehouseShipmentLine, SourceType::Item, WarehouseShipmentLine."Item No.", 0, WarehouseShipmentLine."Qty. to Ship", Item."Gross Weight", SalesHeader."Shipment Method Code", SalesHeader."Shipping Agent Code", SalesHeader."Shipping Agent Service Code");
         AccumulatedWeight += ParcelItem.Weight;
     end;
