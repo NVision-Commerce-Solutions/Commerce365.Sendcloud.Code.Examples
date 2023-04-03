@@ -1,4 +1,4 @@
-﻿# Creating Shipments From Warehouse Shipments
+# Creating Shipments From Warehouse Shipments
  
 In this example we added a button to the warehouse shipment card which creates separate Sendcloud shipments for each unique sales order number on the lines of the warehouse document. The standard extension can automatically create Sendcloud shipments upon posting a warehouse shipment. But if you want to create shipments before posting then this example might help you. 
 
