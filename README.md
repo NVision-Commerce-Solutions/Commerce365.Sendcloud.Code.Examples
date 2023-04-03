@@ -7,3 +7,5 @@ https://n.vision/products/commerce-365-for-sendcloud/
 
 For all developer documentation on Commerce 365 for Sendcloud see: 
 https://n.vision/knowledge-base/commerce-365-for-sendcloud/ 
+
+The warehouse shipment / custom shipment creation example is the first one we added. More examples will be added soon. 
