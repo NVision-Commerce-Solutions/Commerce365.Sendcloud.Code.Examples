@@ -85,8 +85,9 @@ codeunit 50250 "Create From Whse Shipt. SCDNVN"
         ShipmentAPI.TrySetBestShipmentMethod(Parcel);
 
         //Optionally here you could also call the following functions to directly post and print 
-        ShipmentAPI.Post(ShipmentHeader, false);
-        ShipmentAPI.Print(ShipmentHeader);
+        //ShipmentAPI.Post(ShipmentHeader, false);
+        //ShipmentAPI.Print(ShipmentHeader);
+
         exit(true);
     end;
 
@@ -111,9 +112,9 @@ codeunit 50250 "Create From Whse Shipt. SCDNVN"
         //Here we create the parcel line per warehouse shipment line / per item.
         //We need to supply our Sendcloud shipment header and the parcel in which the item is place. 
         //The 3rd parameter is the source record. Again the recordid will be stored just for reference. So here we use the warehouse shipment line. But, you could also bring the actual sales line along.
-        //The following parameter identify which item we are shipping, how many and what the weight is. 
+        //The following parameters identify which item/variant we are shipping, how many and what the weight is. 
         //Last we need to add shipment method, agent, and service codes to our line.
-        ParcelItem := ShipmentAPI.CreateParcelItem(ShipmentHeader, Parcel, WarehouseShipmentLine, SourceType::Item, WarehouseShipmentLine."Item No.", 0, WarehouseShipmentLine."Qty. to Ship", Item."Gross Weight", SalesHeader."Shipment Method Code", SalesHeader."Shipping Agent Code", SalesHeader."Shipping Agent Service Code");
+        ParcelItem := ShipmentAPI.CreateParcelItem(ShipmentHeader, Parcel, WarehouseShipmentLine, SourceType::Item, WarehouseShipmentLine."Item No.", '', WarehouseShipmentLine."Qty. to Ship", Item."Gross Weight", SalesHeader."Shipment Method Code", SalesHeader."Shipping Agent Code", SalesHeader."Shipping Agent Service Code");
         AccumulatedWeight += ParcelItem.Weight;
     end;
 
