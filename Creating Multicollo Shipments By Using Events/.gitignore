@@ -1,0 +1,20 @@
+# AL Code Binary files
+*.app
+
+# AL Cache
+.alcache/
+
+# Snapshots
+.snapshots/
+
+# Local VS Code Settings
+launch.json
+   
+# Rapid development file
+rad.json
+
+# Global translation file
+*.g.xlf
+
+# Permissions analyzer
+permissionsAnalyzer.json
