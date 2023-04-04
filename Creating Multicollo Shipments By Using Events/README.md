@@ -4,6 +4,7 @@ If you have multiple parcels or orders to be delivered to the same receiver addr
 
 This is also a useful example for everyone who is looking for information on how to manipulate Sendcloud shipments and parcels by using events. 
 For a list of all possible events see: 
+
 https://n.vision/knowledge-base/commerce-365-for-sendcloud/developers/so-shipment-events-scnvn-71312643/
 
 https://n.vision/knowledge-base/commerce-365-for-sendcloud/developers/ssh-shipment-events-scnvn-71312644/
