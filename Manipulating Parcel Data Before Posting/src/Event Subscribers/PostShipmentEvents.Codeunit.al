@@ -13,11 +13,12 @@ codeunit 50253 "Post Shipment Events SCDNVN"
     var
         SalesHeader: Record "Sales Header";
         ShipmentHeaderSCNVN: Record "Shipment Header SCNVN";
+        DocumentType: Enum "Sales Document Type";
         KeyNameTxt: Label 'shipping_method_checkout_name';
         ValueToAdd: JsonValue;
     begin
         if ShipmentHeaderSCNVN.Get(ParcelRec."Shipment No.") then
-            if SalesHeader.Get(ShipmentHeaderSCNVN."Order No.") then begin
+            if SalesHeader.Get(DocumentType::Order, ShipmentHeaderSCNVN."Order No.") then begin
                 ValueToAdd.SetValue(SalesHeader."Your Reference");
 
                 if Parcel.Contains(KeyNameTxt) then
