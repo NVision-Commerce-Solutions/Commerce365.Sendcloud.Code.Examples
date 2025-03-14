@@ -1,4 +1,4 @@
-codeunit 50253 "Post Shipment Events SCDNVN"
+codeunit 50004 "Post Shipment Events 2 SCDNVN"
 {
     /// <summary>
     /// With this event subscriber you can tap into the parcel creation process right after the standard solution has formed the parcel object we want to post to Sendcloud. 

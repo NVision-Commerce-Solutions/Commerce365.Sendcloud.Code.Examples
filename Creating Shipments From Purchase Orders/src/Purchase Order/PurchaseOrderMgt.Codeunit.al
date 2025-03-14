@@ -1,4 +1,4 @@
-codeunit 50251 "Create From Purch Order SCDNVN"
+codeunit 50008 "Create From Purch Order SCDNVN"
 {
     Access = Internal;
     TableNo = "Purchase Header";

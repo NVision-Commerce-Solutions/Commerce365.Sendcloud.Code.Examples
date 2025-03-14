@@ -1,4 +1,4 @@
-codeunit 50250 "Create From Whse Shipt. SCDNVN"
+codeunit 50003 "Create From Whse Shipt. SCDNVN"
 {
     Access = Internal;
     TableNo = "Warehouse Shipment Header";

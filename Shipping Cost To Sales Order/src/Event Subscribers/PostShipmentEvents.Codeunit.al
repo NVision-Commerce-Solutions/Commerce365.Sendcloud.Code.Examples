@@ -1,4 +1,4 @@
-codeunit 50253 "Post Shipment Events SCDNVN"
+codeunit 50006 "Post Shipment Events SCDNVN"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"SSH Shipment Events SCNVN", 'OnAfterCreateShipment', '', false, false)]
     local procedure SSHShipmentEventsSCNVN_OnAfterCreateShipment(var SalesShipmentHeader: Record "Sales Shipment Header"; var ShipmentHeader: Record "Shipment Header SCNVN");

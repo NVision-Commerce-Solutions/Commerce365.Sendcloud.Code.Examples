@@ -1,4 +1,4 @@
-codeunit 50252 "Parcel Events SCDNVN"
+codeunit 50002 "Parcel Events Demo 2 SCDNVN"
 {
     /// <summary>
     /// If you have multiple parcels or orders to be delivered to the same receiver address, you can create a multicollo shipment to combine multiple boxes into one delivery. 
@@ -19,9 +19,9 @@ codeunit 50252 "Parcel Events SCDNVN"
         //Get the calculated weight value for our parcel
         Parcel.CalcFields(Weight);
         //Set the number of labels to a value higher than 1
-        Parcel.Validate("No. of Labels", 2);
+        Parcel.Validate("No. of Labels", 25);
         //When requesting more than 1 label, you can set the actual weight to your desired weight per parcel
-        Parcel.Validate("Actual Weight", (Parcel.Weight / 2));
+        Parcel.Validate("Actual Weight", (Parcel.Weight / Parcel."No. of Labels"));
         Parcel.Modify(true);
         //After the actual weight per parcel has been updated, you can run the TrySetBestShipmentMethod function again to determine the best possible shipment method. 
         //You might end up with a better/cheaper shipment method, because the weight per parcel might have been adjusted. 

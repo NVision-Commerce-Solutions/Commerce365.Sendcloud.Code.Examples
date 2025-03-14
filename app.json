@@ -2,7 +2,7 @@
   "id": "72ebe89d-df08-4d32-9768-6113ca67e171",
   "name": "Commerce365.Sendcloud.CodeDemos",
   "publisher": "NVision Commerce Solutions B.V.",
-  "version": "1.0.0.0",
+  "version": "24.0.1.0",
   "brief": "Sendcloud",
   "description": "Sendcloud",
   "privacyStatement": "https://n.vision/privacy-policy/",
@@ -15,7 +15,7 @@
     {
       "id": "880682a8-042a-4d3c-a34e-53784a0fc353",
       "name": "Commerce 365 for Sendcloud",
-      "version": "21.1.20018.1",
+      "version": "24.1.30160.0",
       "publisher": "NVision Commerce Solutions B.V."
     }
   ],
@@ -24,8 +24,8 @@
   "application": "21.0.0.0",
   "idRanges": [
     {
-      "from": 50250,
-      "to": 50279
+      "from": 50000,
+      "to": 59999
     }
   ],
   "resourceExposurePolicy": {
@@ -33,7 +33,7 @@
     "allowDownloadingSource": true,
     "includeSourceInSymbolFile": true
   },
-  "runtime": "10.0",
+  "runtime": "12.0",
   "features": [
     "NoImplicitWith"
   ]
