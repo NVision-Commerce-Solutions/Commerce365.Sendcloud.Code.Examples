@@ -1,3 +1,3 @@
-# Manipulating Parcel Data Before Posting
+# Shipping Cost To Sales Order
  
-In project we want to demonstrate certain scenarios of manipulating parcel data before it is finally posted to Sendcloud. 
+Please note that adding shipping cost to a sales order is already available as standard functionality. This example is just to show you a custom process on how to do this programatically. 
